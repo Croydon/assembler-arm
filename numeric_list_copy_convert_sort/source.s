@@ -18,14 +18,14 @@ copy:
 
 	@r4 holds temporary the current number, not neccessary here, r4 would be equal r3
 
-	MOV r5, #1 @ foreach counter
+	MOV r5, #2 @ foreach counter, we starting at the second element
 
 foreach:
 	LDRB r4, [r1, #1]! @ load next number from Liste1, increase pointer with write back
 
 	BL signed
 
-	STR r4, [r2, #9]! @ word size = 4xbyte, increase pointer with write back
+	STR r4, [r2, #4]! @ word size = 4xbyte, increase pointer with write back
 
 	@ check if there are futher elements left
 	CMP r5, r3
@@ -37,8 +37,8 @@ foreach:
 
 signed:
 @ convert each signed 8bit number to a signed 32bit number
-	MOV r4, r4, LSL #24 @ fill up the remaining digits with zeros to the right
-	MOV r4, r4, ASR #24 @ keep the MSB, but shift the rest of the original 8bit number back
+	LSL r4, #24 @ fill up the remaining digits with zeros to the right
+	ASR r4, #24 @ keep the MSB, but shift the rest of the original 8bit number back
 
 	bx lr
 
