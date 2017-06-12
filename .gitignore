@@ -1,4 +1,5 @@
-.elf
-.proj
+*.elf
 .S~
 .s~
+*SNDB*
+local/
