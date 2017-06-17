@@ -1,5 +1,5 @@
 *.elf
-.S~
-.s~
+*.S~
+*.s~
 *SNDB*
 local/
